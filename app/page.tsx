@@ -1,12 +1,13 @@
-import { getData } from "@/data/neon";
+import { getPostCount } from "@/data/neon";
 
 export default async function Home() {
-  const version = await getData();
+  const postcount = await getPostCount();
 
   return (
     <div className="grid grid-cols-12 min-h-svh">
-      <div className="col-span-full flex items-center justify-center">
-        {version}
+      <div className="col-span-full flex flex-col items-center justify-center">
+        <div>{postcount}</div>
+        <div></div>
       </div>
     </div>
   );
