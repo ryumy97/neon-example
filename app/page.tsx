@@ -11,10 +11,10 @@ export default async function Home() {
         <div>
           <h1>Posts</h1>
           <div>Number of posts: {postcount}</div>
-          <div className="space-y-8 min-w-2xl">
+          <div className="space-y-8 min-w-2xl mt-6">
             {posts.map((item) => {
               return (
-                <div key={item.id}>
+                <div key={item.id} className="space-y-2">
                   <h3 className="text-2xl">{item.title}</h3>
                   <p>{item.content}</p>
                 </div>
@@ -22,7 +22,7 @@ export default async function Home() {
             })}
           </div>
         </div>
-
+        <hr className="min-w-2xl" />
         <CreatePostForm />
       </div>
     </div>
