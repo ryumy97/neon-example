@@ -1,5 +1,6 @@
 import { getPostCount, getPosts } from "@/data/neon";
 import CreatePostForm from "./form/create-post";
+import PostCard from "./card/post-card";
 
 export default async function Home() {
   const postcount = await getPostCount();
@@ -13,12 +14,7 @@ export default async function Home() {
           <div>Number of posts: {postcount}</div>
           <div className="space-y-8 min-w-2xl mt-6">
             {posts.map((item) => {
-              return (
-                <div key={item.id} className="space-y-2">
-                  <h3 className="text-2xl">{item.title}</h3>
-                  <p>{item.content}</p>
-                </div>
-              );
+              return <PostCard key={item.id} {...item} />;
             })}
           </div>
         </div>

@@ -27,3 +27,24 @@ export async function createPost(data: { title: string; content: string }) {
     data,
   });
 }
+
+export async function likePost(id: number) {
+  if (!process.env.DATABASE_URL) {
+    throw new Error("Environment variable not set!!!");
+  }
+
+  const post = await prisma.post.findFirstOrThrow({
+    where: {
+      id: id,
+    },
+  });
+
+  return prisma.post.update({
+    data: {
+      likes: (post.likes || 0) + 1,
+    },
+    where: {
+      id: id,
+    },
+  });
+}
